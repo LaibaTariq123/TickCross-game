@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 // import { Button } from "react-bootstrap";
 
 const winnerArray = [
@@ -24,6 +25,17 @@ function Tickcrossgame() {
 		const player = [...currentPlayer];
 		player[turnno] = turn;
 		setCurrentPlayer(player);
+		winnerArray.find((winMap) => {
+			if (
+				player[winMap[0]] === player[winMap[1]] &&
+				player[winMap[1]] === player[winMap[2]] &&
+				player[winMap[0]] === player[winMap[2]] &&
+				player[winMap[0]] === turn
+			) {
+				alert("The winner is..." + turn);
+				return;
+			}
+		});
 	};
 
 	const reStartGame = () => {
@@ -128,6 +140,7 @@ function Tickcrossgame() {
 					</button>
 				</div>
 			</div>
+			<Footer />
 		</>
 	);
 }
